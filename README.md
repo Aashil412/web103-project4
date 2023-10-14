@@ -37,6 +37,7 @@ Here's a walkthrough of implemented required features:
 
 <img src='https://github.com/Aashil412/web103-project4/blob/main/client/public/Web103_hw4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+<img src='https://github.com/Aashil412/web103-project4/blob/main/client/public/web103hw4.png' />
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  GIF tool here
 <!-- Recommended tools:
