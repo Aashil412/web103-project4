@@ -27,10 +27,10 @@ const App = () => {
       path: '/edit/:id',
       element: <EditCar />
     },
-    // {
-    //   path:'*',
-    //   element: < NotFound />
-    // }
+    {
+      path:'*',
+      element: < NotFound />
+    }
   ])
 
   return (
