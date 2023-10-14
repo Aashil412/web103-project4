@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
-import './ViewCars.css';
+import '../css/ViewCars.css';
 import { Link } from 'react-router-dom';
-import carsAPI from '../services/carsAPI';
+import carsAPI from '../../services/api';
 
 const ViewCars = () => {
     const [cars, setCars] = useState([]);
@@ -19,9 +18,8 @@ const ViewCars = () => {
         }) ()
     }, []);
 
-    const calculatePrice = (originalPrice) => {
-        const taxRate = 0.10; 
-        return originalPrice + (originalPrice * taxRate);
+    const priceafterTax = (originalPrice) => {
+        return originalPrice + (originalPrice *  0.08);
     };
 
     return (
@@ -29,12 +27,11 @@ const ViewCars = () => {
             {cars.map((car, index) => (
                 <article key={index}>
                     <header>{car.name}</header>
-                    <img src={car.image} alt={car.name} className="car-image" />
                     <div className="car-card">
                         <p>{car.description}</p>
                         <div className='car-price'>
                             <p>Original Price: ${car.price}</p>
-                            <p>Calculated Price: ${calculatePrice(car.price)}</p>
+                            <p>Calculated Price: ${priceafterTax(car.price)}</p>
                             <Link className="view-btn" to={`/customcars/${car.id}`}>Details</Link>
                         </div>
                     </div>

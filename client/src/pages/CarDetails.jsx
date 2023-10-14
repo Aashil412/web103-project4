@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import carsAPI from '../services/carsAPI';
-import '../App.css';
-import './CarDetails.css';
+import carsAPI from '../../services/api';
+import '../css/CarDetails.css';
+
 
 const CarDetails = () => {
     const [car, setCar] = useState(null);
@@ -49,7 +49,6 @@ const CarDetails = () => {
     return (
         <div className="detailsWrapper">
             <article className="carFullDetails">
-                <img src={car.image} alt={`${car.name}`} className="carImage"/>
                 <header><h2>{car.name}</h2></header>
                 <div className="detailsContent">
                     <p>Price: ${car.price}</p>

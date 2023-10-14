@@ -5,35 +5,39 @@ import ViewCars from './pages/ViewCars'
 import EditCar from './pages/EditCar'
 import CreateCar from './pages/CreateCar'
 import CarDetails from './pages/CarDetails'
+import Car from './components/Car'
+import NotFound from './pages/NotFound';
 import './App.css'
 
 const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <CreateCar title='BOLT BUCKET | Customize' />
+      element: <CreateCar  />
     },
     {
-      path:'/customcars',
-      element: <ViewCars title='BOLT BUCKET | Custom Cars' />
+      path:'/cars',
+      element: <ViewCars  />
     },
     {
       path: '/customcars/:id',
-      element: <CarDetails title='BOLT BUCKET | View' />
+      element: <CarDetails />
     },
     {
       path: '/edit/:id',
-      element: <EditCar title='BOLT BUCKET | Edit' />
-    }
+      element: <EditCar />
+    },
+    // {
+    //   path:'*',
+    //   element: < NotFound />
+    // }
   ])
 
   return (
     <div className='app'>
-
       <Navigation />
-
       { element }
-
+      
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import carsAPI from '../services/carsAPI'; 
-import './EditCar.css';
+import carsAPI from '../../services/api';
+import '../css/EditCar.css'
 const EditCar = () => {
     const { id } = useParams();
     const navigate = useNavigate(); 
@@ -89,22 +89,23 @@ const EditCar = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea 
-                        id="description" 
-                        name="description" 
-                        value={formData.description} 
+                    <label htmlFor="price">Wheels:</label>
+                    <input 
+                        type="string" 
+                        id="wheels" 
+                        name="wheels" 
+                        value={formData.wheels} 
                         onChange={handleChange} 
                         required
                     />
                 </div>
                 <div>
-                    <label htmlFor="image">Image URL:</label>
+                    <label htmlFor="price">interior:</label>
                     <input 
-                        type="url" 
-                        id="image" 
-                        name="image" 
-                        value={formData.image} 
+                        type="string" 
+                        id="interior" 
+                        name="interior" 
+                        value={formData.interior} 
                         onChange={handleChange} 
                         required
                     />

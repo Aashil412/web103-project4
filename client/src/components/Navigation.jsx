@@ -2,16 +2,20 @@ import React from 'react'
 import '../App.css'
 import '../css/Navigation.css'
 
+import { useStoreActions } from 'easy-peasy';
+
 const Navigation = () => {
+
+    const reset = useStoreActions ((state) => state.resetCar)
     return (
         <nav>
             <ul>
-                <li><h1>Bolt Bucket 🏎️</h1></li>
+                <li><h1> Cars </h1></li>
             </ul>
-
             <ul>
-                <li><a href='/' role='button'>Create</a></li>
-                <li><a href='/customcars' role='button'>View Cars</a></li>
+                <li role='button' onClick={() => reset()}>reset</li>
+                <li><a href='/' role='button'>Customize</a></li>
+                <li><a href='/cars' role='button'>View Cars</a></li>
             </ul>
             
         </nav>

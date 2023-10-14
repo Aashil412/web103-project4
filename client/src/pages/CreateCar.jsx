@@ -1,114 +1,78 @@
-import React, { useState } from 'react';
-import carsAPI from '../services/carsAPI';
-import './CreateCars.css';
+import React, {useState, useEffect} from 'react'
+import '../App.css'
+import Colors from '../components/Colors'
+import Roof from '../components/Roof'
+import Wheels from '../components/Wheels'
+import Interior from '../components/Interior';
+import Car from '../components/Car'
+import carsAPI from '../../services/api';
+import { useStoreState, useStoreActions } from 'easy-peasy';
+
 
 const CreateCar = () => {
-    const [car, setCar] = useState({
-        name: '',
-        price: '',
-        description: '',
-        image: '',
-        isConvertible: false  // Added state property for "is convertible"
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCar({
-            ...car,
-            [name]: value
-        });
-    };
-
-    const handleCheckboxChange = (e) => {
-        const { name, checked } = e.target;
-        setCar({
-            ...car,
-            [name]: checked
-        });
-    };
-
+    const [elements,setElements] = useState(1)
+    const [carName , setCarName ] = useState('')
+    const updateCarName = useStoreActions((state) => state.updateName);
+    const car = useStoreState((state) => state.car)
+    const reset = useStoreActions ((state) => state.resetCar)
+ 
+    useEffect(() => {
+        updateCarName(carName)
+      },[carName]);
+    
     const createCar = async (event) => {
         event.preventDefault();
-        try {
-            console.log("Creating car...");
-            await carsAPI.createCars(car);
-            console.log("Car created");
-            setCar({
-                name: '',
-                price: '',
-                description: '',
-                image: '',
-                isConvertible: false
-            });
+        if(car.roof !== "Hardtop" && car.wheels !== "Dunlop"){
+            try {
+                console.log("Creating car...");
+                await carsAPI.createCars(car);
+                alert("Car created successfully!");
+                reset()
+            }
+            catch (error) {
+                console.error("Error creating car:", error.message);
+            }
+        } else {
+            reset()
+            alert("Combo not possible!")
         }
-        catch (error) {
-            console.error("Error creating car:", error.message);
-        }
-    };
+    }; 
 
     return (
-        <div className='create-car'>
-            <form onSubmit={createCar}>
-                <div className='create-car-name'>
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder='Name your car'
-                        value={car.name}
-                        onChange={handleChange}
-                        required
-                    />
+        <>
+        <div class="create-car">
+            <div class="create-car-options">
+                <div id="customization-options" class="car-options">
+                    <div id="car-options" aria-hidden="true">
+                        <button onClick={() =>setElements(1)}>Color</button></div>
+                    <div id="car-options">
+                        <button onClick={() =>setElements(2)}>roof</button>
+                    </div>
+                    <div id="car-options">
+                        <button onClick={() =>setElements(3)}>wheels</button>
+                    </div>
+                    <div id="car-options" onClick={() =>setElements(4)}>
+                        <button>interior</button>
+                    </div>
+                    
+                    </div>
                 </div>
-                <div className='create-car-price'>
-                    <label htmlFor="price">Price:</label>
-                    <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        value={car.price}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        placeholder='Describe your car'
-                        value={car.description}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="image">Image URL:</label>
-                    <input
-                        type="url"
-                        id="image"
-                        name="image"
-                        placeholder='Image URL for your car'
-                        value={car.image}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="isConvertible">Is Convertible:</label>
-                    <input
-                        type="checkbox"
-                        id="isConvertible"
-                        name="isConvertible"
-                        checked={car.isConvertible}
-                        onChange={handleCheckboxChange}
-                    />
-                </div>
-                <button type="submit" className="create-car-button">Create Car</button>
-            </form>
+                    <div class="create-car-name">
+                        <form className="create-car-name" >
+                            <input type="text" id="name" value ={carName} name="name" onChange={(e) => setCarName(e.target.value)} placeholder="Car name" />
+                            <input type="submit" class="create-car-button" value="Create Car" onClick={createCar}/>
+                        </form>
+                    </div>
+                    
         </div>
-    );
-};
+        {elements === 1 && <Colors />}
+        {elements === 2 && <Roof />}
+        {elements === 3 && <Wheels />}
+        {elements === 4 && <Interior />}
+        <Car />
+        </>
+                
+    )
+}
 
-export default CreateCar;
+export default CreateCar

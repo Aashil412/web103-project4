@@ -1,13 +1,12 @@
 import express from "express";
-
-import carsController from "../controllers/cars.js";
+import EventsController from "../controllers/cars.js";
 
 const router = express.Router();
 
-router.get("/", carsController.getCars);
-router.get("/:id", carsController.getCarsById);
-router.post('/', carsController.createCar);
-router.patch('/:id', carsController.updateCar);
-router.delete('/:id', carsController.deleteCar);
+router.get('/', EventsController.getCars);
+router.get('/:carId', EventsController.getCarsbyId);
+router.post('/', EventsController.createCars)
+router.patch('/:id', EventsController.updateCar);
+router.delete('/:id', EventsController.deleteCar);
 
-export default router;
+export default router

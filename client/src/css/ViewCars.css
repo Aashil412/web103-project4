@@ -1,0 +1,59 @@
+
+
+.cars-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background-color: #333;
+  }
+  
+  article {
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    max-width: calc(25% - 20px);
+    background-color: #fff;
+    color: #333;
+  }
+  
+  article header {
+    font-size: 20px;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #fff;
+  }
+  
+  .car-card {
+    padding: 10px 0;
+  }
+  
+  .car-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  
+  .car-price p {
+    margin: 5px 0;
+  }
+  
+  .view-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .view-btn:hover {
+    background-color: #0056b3;
+  }
+  

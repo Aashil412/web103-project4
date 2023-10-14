@@ -1,0 +1,58 @@
+/* EditCar.css */
+
+.edit-car {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #800000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    color: #000;
+  }
+  
+  .edit-car h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .edit-car .error {
+    color: #ff0000;
+    margin-bottom: 10px;
+  }
+  
+  .edit-car form div {
+    margin-bottom: 15px;
+  }
+  
+  .edit-car label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .edit-car input[type="text"],
+  .edit-car input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .edit-car button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-car button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
